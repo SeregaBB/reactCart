@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import {Grid, Row, Button} from 'react-bootstrap';
 import {data} from './components/data/items';
 import  GroupButton  from './components/GroupButton/GroupButton';
-
+import Cart from "./components/Cart/Cart";
 
 class App extends Component {
   constructor(props){
@@ -42,12 +42,37 @@ class App extends Component {
        this.setState({ 'itemsInCart' : this.state.itemsInCart});
   }
 
+  addOrRemove = (elClassName, elemid) => {
+    console.log(elClassName);
+    console.log(elemid);
+    const stateEl = this.state.itemsInCart.map(function(el, indelm){
+      if (el.id === elemid.id) return indelm;
+    })
+     for (let k in stateEl){ 
+      if(stateEl[k] > -1 && elClassName.indexOf('minus') > -1) {
+          this.state.itemsInCart[stateEl[k]].num -= 1;
+           if (this.state.itemsInCart[stateEl[k]].num === 0) {
+            this.state.itemsInCart.splice(stateEl[k], 1);
+          }
+        } else if(stateEl[k] > -1 && elClassName.indexOf('remove') > -1) {
+          this.state.itemsInCart.splice(stateEl[k], 1);
+        }
+     }
+    // if(stateEl > -1 && elClassName.indexOf('minus') > -1) {
+    //   this.state.itemsInCart[stateEl].num -= 1;
+    //    if (this.state.itemsInCart[stateEl].num === 0) {
+    //     this.state.itemsInCart.splice(stateEl, 1);
+    //   }
+    // } 
 
-  nums = (numOfel) => {
-    return numOfel === 1 ? ' штука' : 
-    (numOfel > 1 && numOfel < 5) ? ' штуки' : 
-    (numOfel >= 5 && numOfel < 20) ? ' штук' : ' штук';  
+    this.setState({itemsInCart: this.state.itemsInCart});
   }
+
+  // nums = (numOfel) => {
+  //   return numOfel === 1 ? ' штука' : 
+  //   (numOfel > 1 && numOfel < 5) ? ' штуки' : 
+  //   (numOfel >= 5 && numOfel < 20) ? ' штук' : ' штук';  
+  // }
 
 
 
@@ -56,11 +81,16 @@ class App extends Component {
     return (
     <div>
       <GroupButton data={data} onClick={this.addToCart}/>
-
+      <br/>
+      <hr/>
+{/* 
       <ul> 
         {this.state.itemsInCart.map(el=><li className="row" id={el.id} key={el.id}>
         <span className="col-md-4">{el.name}</span><span className="col-md-4">{el.num + this.nums(el.num)}</span></li>)}
-        </ul>
+        </ul> */}
+
+        <Cart items={this.state.itemsInCart} onClick={this.addOrRemove}/>
+
       </div>
     );
   }

@@ -30,3 +30,13 @@
 ul {
   list-style: none;
 }
+
+.minus {
+  cursor: pointer;
+  color: orange;
+}
+
+.remove {
+  cursor: pointer;
+  color: red;
+}

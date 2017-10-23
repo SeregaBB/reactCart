@@ -11,7 +11,11 @@ class GroupButton extends Component {
         return(
             <Grid>
                 <Row>
-            {this.props.data.map(el=><Button bsStyle="default" id={el.id} key={el.name} onClick={e => this.props.onClick(e.target.id, el.name)} className="col-md-3">{el.name}</Button>)}
+            {this.props.data.map(el=>
+            <Button bsStyle="default" id={el.id} key={el.name} 
+            onClick={e => this.props.onClick(e.target.id, el.name)} className="col-md-3">
+            {el.name}
+            </Button>)}
                 </Row>
             </Grid>
         )
