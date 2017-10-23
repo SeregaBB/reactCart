@@ -17,7 +17,7 @@ class Cart extends Component {
         return(
             <ul> 
             {this.props.items.map(el=><li className="row" id={el.id} key={el.id}>
-            <span className="col-md-3">{el.name}</span>
+            <span className="col-md-3"><img src={require('../imgs/Ph03nyx-Super-Mario-Mushroom-Super.ico')} width="40"/>{' ' + el.name}</span>
             <span className="col-md-3">{el.num + this.nums(el.num)}</span>
             <span className="col-md-3 minus" onClick={e => this.props.onClick(e.target.className, el)}>{'-'}</span>
             <span className="col-md-3 remove" onClick={e => this.props.onClick(e.target.className, el)}>{'X'}</span>
