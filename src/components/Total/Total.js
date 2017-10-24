@@ -21,8 +21,10 @@ total = (nums) => {
 }
 render() {
     return (
-        <div className="float-right">
-        <span className="float-md-right">{this.total(this.props.dataNum) + ' руб.'}</span>  
+        <div className="row">
+        <span className="col-md-6">{'Итого: '}</span>
+        <span className="col-md-6">{this.total(this.props.dataNum) + ' руб.'}</span>  
+        
         </div>
     )
 }

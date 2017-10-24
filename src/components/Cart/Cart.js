@@ -22,7 +22,8 @@ class Cart extends Component {
             <span className="col-md-2">{el.price + ' руб.'}</span>
             <span className="col-md-2 minus" onClick={e => this.props.onClick(e.target.className, el)}>{'-'}</span>
             <span className="col-md-2 remove" onClick={e => this.props.onClick(e.target.className, el)}>{'X'}</span>
-        
+            <br/>
+            <hr/>
             </li>)}
             </ul>
         )

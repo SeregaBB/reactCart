@@ -6,6 +6,8 @@ import {data} from './components/data/items';
 import  GroupButton  from './components/GroupButton/GroupButton';
 import Cart from "./components/Cart/Cart";
 import Total from './components/Total/Total';
+
+
 class App extends Component {
   constructor(props){
     super(props);
