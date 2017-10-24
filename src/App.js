@@ -5,7 +5,7 @@ import {Grid, Row, Button} from 'react-bootstrap';
 import {data} from './components/data/items';
 import  GroupButton  from './components/GroupButton/GroupButton';
 import Cart from "./components/Cart/Cart";
-
+import Total from './components/Total/Total';
 class App extends Component {
   constructor(props){
     super(props);
@@ -21,7 +21,7 @@ class App extends Component {
 
 
 
-  addToCart = (elId, elName) => {
+  addToCart = (elId, elName, elPrice) => {
     const cart = this.state;
     const a = cart.itemsInCart.map(function(el){
       return (el.id);
@@ -30,7 +30,7 @@ class App extends Component {
 
     if (a.indexOf(elId) === -1) {
     cart.itemsInCart.push({
-      id: elId, name: elName, num: 1
+      id: elId, name: elName, num: 1, price: elPrice
     })
   } else {
     cart.itemsInCart[a.indexOf(elId)].num += 1;
@@ -90,7 +90,7 @@ class App extends Component {
         </ul> */}
 
         <Cart items={this.state.itemsInCart} onClick={this.addOrRemove}/>
-
+        <Total dataNum={this.state.itemsInCart}/>
       </div>
     );
   }

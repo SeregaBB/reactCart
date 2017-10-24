@@ -13,7 +13,7 @@ class GroupButton extends Component {
                 <Row>
             {this.props.data.map(el=>
             <Button bsStyle="default" id={el.id} key={el.name} 
-            onClick={e => this.props.onClick(e.target.id, el.name)} className="col-md-3">
+            onClick={e => this.props.onClick(e.target.id, el.name, el.price)} className="col-md-3">
             <img src={require('../imgs/Ph03nyx-Super-Mario-Mushroom-Super.ico')} width="40"/>{' ' + el.name}
             </Button>)}
                 </Row>
